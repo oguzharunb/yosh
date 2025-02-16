@@ -54,6 +54,6 @@ int	lexer(char *input)
 }
 int main()
 {
-    lexer("hello \"oguz harun bastug\"    world yusuf'oguz hello world''harun bastug'");
+    lexer("hello \"oguz harun bastug    world yusuf'oguz hello world''harun bastug'");
     return 0;
 }
