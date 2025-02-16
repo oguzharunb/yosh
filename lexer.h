@@ -1,26 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 19:03:49 by obastug           #+#    #+#             */
+/*   Updated: 2025/02/16 19:03:49 by obastug          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LEXER_H
 # define LEXER_H
 
 typedef enum { 
-    TOKEN_WORD,				// Generic word // {{$ARG -> WORD}}
-    TOKEN_ASSIGNMENT_WORD,	// Assignment operation (e.g., VAR=value)
-    TOKEN_NAME,				// Name (e.g., function or variable name)
-    TOKEN_NEWLINE,			// Newline character
-    TOKEN_IO_NUMBER,		// File descriptor number
+	TOKEN_WORD,				// Generic word // {{$ARG -> WORD}}
+	TOKEN_ASSIGNMENT_WORD,	// Assignment operation (e.g., VAR=value)
+	TOKEN_NAME,				// Name (e.g., function or variable name)
+	TOKEN_NEWLINE,			// Newline character
+	TOKEN_IO_NUMBER,		// File descriptor number
 
 	TOKEN_GREAT,			// '>'
 	TOKEN_LESS,				// '<'
-    TOKEN_DLESS,			// '<<'
-    TOKEN_DGREAT,			// '>>'
+	TOKEN_DLESS,			// '<<'
+	TOKEN_DGREAT,			// '>>'
 	TOKEN_PIPE,				// '|'
 
-    TOKEN_EOF,				// End of file/input
-    TOKEN_ERROR				// Error token
+	TOKEN_EOF,				// End of file/input
+	TOKEN_ERROR				// Error token
 } TokenType;
 
 typedef struct	s_token{
-    TokenType	type;
-    char		*value;
+	TokenType	type;
+	char		*value;
 }			t_token;
 
 #endif

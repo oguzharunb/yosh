@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/15 01:47:37 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:44:45 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int main(int ac, char **av, char **env)
 
 	while (1)
 	{
-		//	Discuss interactive, non-interactive!
-		//	if non-interactive shell needed add a get_input function 
-		//	checkout isatty function and implement getnextline
 		input = readline("minishell> ");
 		if (!input)	printf("\n");
 		else	add_history(input);
