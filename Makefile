@@ -1,6 +1,6 @@
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror
-
+LDFLAGS			= -lreadline
 NAME			= minishell
 
 MANDATORY_DIR 		= source
@@ -11,7 +11,7 @@ OBJ				= $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS)
 
 clean:
 	rm -rf $(OBJ)

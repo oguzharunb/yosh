@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:03:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/16 19:03:49 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/18 05:33:06 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
-
-typedef enum { 
+ // count the variables once after counted all of them add \n =
+typedef enum { 	// '\n' '\"' '\'' '>' '<' '>>' '<<' '$' '=' '|'
 	TOKEN_WORD,				// Generic word // {{$ARG -> WORD}}
 	TOKEN_ASSIGNMENT_WORD,	// Assignment operation (e.g., VAR=value)
 	TOKEN_NAME,				// Name (e.g., function or variable name)
@@ -34,6 +34,8 @@ typedef struct	s_token{
 	TokenType	type;
 	char		*value;
 }			t_token;
+
+t_token	*lexer(char *input);
 
 #endif
 

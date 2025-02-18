@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 23:41:54 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/17 01:05:27 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/18 05:36:24 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	str_len(const char *str)
 static char	*str_join(char *s1, char *s2, int s1_len, int s2_len)
 {
 	char	*res;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	res = malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!res)

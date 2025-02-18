@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/17 01:24:30 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/18 05:47:37 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,25 @@
 #include <readline/history.h>
 #include "lexer.h"
 
-int main(int ac, char **av, char **env)
+char	*get_input(void);
+
+int main(void)
 {
 	char	*input;
+	t_token *tokens;
 	
-
 	while (1)
 	{
 		input = get_input(); // checks if input completed
 		if (!input)
 			exit(2); // err
-		if (!input)	printf("\n");
-		else	add_history(input);
 		if (!strcmp(input, "exit"))	break;
 		printf("promt: %s\n", input);
-		//	lexer
-		//if (!lexer)
+		tokens = lexer(input);
+		if (!tokens->value)
+			continue;
+		add_history(input);
+		printf("here\n");
 		//	continue;
 		//	parser
 		//	executer
