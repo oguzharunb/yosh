@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:06:17 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/18 05:37:36 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/19 06:32:36 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,8 +161,5 @@ t_token	*lexer(char *input)
 	}
 	tokens[++i].value = NULL;
 	insert_types(&tokens);
-	i = -1;
-	while (tokens[++i].value)
-		printf("%s\n", tokens[i].value);
 	return (tokens);
 }
