@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 01:12:45 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 01:40:52 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,13 @@ int main(void)
 		expander(tokens); /* deletes quotes and dquotes
 						and gets env variables */
 		//	parser
-		print_token(tokens);
+		//print_token(tokens);
 		root = init_node(tokens);
+		if (!root)
+		
 		parser(root);
 		//	executer
+		free_asttree(root);
 		free(input);
 	}
 	rl_clear_history();
