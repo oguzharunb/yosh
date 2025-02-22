@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/19 07:04:48 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/23 01:12:45 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "lexer.h"
+#include "parser.h"
 
 static int	check_sequence_complete(char *input)
 {
@@ -54,8 +55,9 @@ void	expander(t_token *tokens);
 
 int main(void)
 {
-	char	*input;
-	t_token *tokens;
+	char		*input;
+	t_token 	*tokens;
+	t_astnode	*root;
 	
 	while (1)
 	{
@@ -80,14 +82,12 @@ int main(void)
 			continue;
 		}
 		add_history(input);
-		printf("here\n");
 		expander(tokens); /* deletes quotes and dquotes
 						and gets env variables */
-		int i = -1;
-		printf("here2\n");
-		while (tokens[++i].value)
-			printf("%s\n", tokens[i].value);
 		//	parser
+		print_token(tokens);
+		root = init_node(tokens);
+		parser(root);
 		//	executer
 		free(input);
 	}

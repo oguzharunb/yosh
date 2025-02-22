@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:00:14 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/22 15:41:17 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 01:13:27 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_astnode
 	t_token					*tokens;
 	struct s_astnode		*left;
 	struct s_astnode		*right;
+	char					**command;
 	char					*file;
 	int						redirect_type;
 } t_astnode;
@@ -36,4 +37,6 @@ void		print_token(t_token *tokens);
 t_astnode	*init_node(t_token *token);
 void		print_node(t_astnode *node);
 t_astnode	*parse_pipe(t_astnode *root);
-//file also EOF for heredoc
+t_astnode	*parse_redirect(t_astnode *root);
+t_astnode	*parse_command(t_astnode *root);
+t_astnode	*parser(t_astnode *root);
