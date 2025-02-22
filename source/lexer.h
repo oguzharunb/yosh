@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:03:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/19 05:11:21 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:40:14 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef enum { 	// '\n' '\"' '\'' '>' '<' '>>' '<<' '$' '=' '|'
 	TOKEN_DGREAT,			// '>>'
 	TOKEN_PIPE,				// '|'
 
-	TOKEN_EOC,				// End of command
+	TOKEN_SKIP,				// Skip
+	TOKEN_EON,				// End of command
 	TOKEN_EOF,				// End of file/input
 	TOKEN_ERROR				// Error token
 } TokenType;
