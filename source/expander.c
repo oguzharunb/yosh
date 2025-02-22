@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:04:51 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/19 08:25:18 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:11:59 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ static char	*expand_dquote(char *token_value)
 	i = -1;
 	while (token_value[++i])
 	{
-		printf("tokvalcur:%c\n", (token_value[i]));
+		//printf("tokvalcur:%c\n", (token_value[i]));
 		if (token_value[i] == '$')
 		{
 			env_vars[j] = expand_dollar(token_value);
@@ -141,7 +141,7 @@ static char	*expand_dquote(char *token_value)
 		else
 			len++;			
 	}
-	printf("{{{%d}}}\n", len);
+	//printf("{{{%d}}}\n", len);
 	j = -1;
 	while (env_vars[++j])
 		printf("%sx\n", env_vars[j]);
