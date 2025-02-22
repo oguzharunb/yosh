@@ -5,7 +5,8 @@ NAME			= minishell
 
 MANDATORY_DIR 		= source
 
-SRC				= $(wildcard $(MANDATORY_DIR)/*.c)
+SOURCE			= parser.c expander.c lexer.c main.c
+SRC				= $(addprefix $(MANDATORY_DIR)/, $(SOURCE))
 OBJ				= $(SRC:.c=.o)
 
 all: $(NAME)
