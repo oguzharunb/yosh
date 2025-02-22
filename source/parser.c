@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:29:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:05:54 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 01:38:30 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@
 //returns itself
 
 //only pipe can have children
+
+void	free_asttree(t_astnode *root)
+{
+	free(root->command);
+	if (root->left)
+		free_asttree(root->left);
+	if (root->right)
+		free_asttree(root->right);
+	free(root);
+}
+
 t_astnode	*init_node(t_token *token)
 {
 	t_astnode	*node;

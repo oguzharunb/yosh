@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:00:14 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:13:27 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 01:40:36 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,4 @@ t_astnode	*parse_pipe(t_astnode *root);
 t_astnode	*parse_redirect(t_astnode *root);
 t_astnode	*parse_command(t_astnode *root);
 t_astnode	*parser(t_astnode *root);
+void		free_asttree(t_astnode *root);
