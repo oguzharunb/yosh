@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:29:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:38:30 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 07:29:50 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@
 //returns itself
 
 //only pipe can have children
-
+#include <unistd.h>
 void	free_asttree(t_astnode *root)
 {
-	free(root->command);
-	if (root->left)
-		free_asttree(root->left);
-	if (root->right)
-		free_asttree(root->right);
+	write(1, "f\n", 2);
+	if (!root)
+		return ;
+	if (root->command)
+		free(root->command);
+	free_asttree(root->left);
+	free_asttree(root->right);
 	free(root);
+	write(1, "freed node\n", 12);
 }
 
 t_astnode	*init_node(t_token *token)
@@ -42,6 +45,7 @@ t_astnode	*init_node(t_token *token)
 	node->file = NULL;
 	node->left = NULL;
 	node->right = NULL;
+	node->command = NULL;
 	node->type = UNINITIALIZED;
 	node->redirect_type = 0;
 	return (node);

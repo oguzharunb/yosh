@@ -6,15 +6,14 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:03:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 04:09:04 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:09:34 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
-# include <stdio.h>
- // count the variables once after counted all of them add \n =
+// count the variables once after counted all of them add \n =
 typedef enum { 	// '\n' '\"' '\'' '>' '<' '>>' '<<' '$' '=' '|'
 	TOKEN_WORD,				// Generic word // {{$ARG -> WORD}}
 	TOKEN_ASSIGNMENT_WORD,	// Assignment operation (e.g., VAR=value)
@@ -40,6 +39,7 @@ typedef struct	s_token{
 }			t_token;
 
 t_token	*lexer(char *input);
+void	expander(t_token *tokens);
 
 #endif
 

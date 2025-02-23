@@ -6,18 +6,16 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:06:17 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 03:52:49 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/23 05:06:59 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include <stdlib.h>
 
-static int	is_token(char c)
-{
-	return (c == '\"' || c == '\'' || c == '$' || c == '=' ||
-			c == '>' || c == '<' || c == '|' || c == '\n');
-}
+int	is_token(char c);
+int	strcomp(char *str1, char *str2);
+char	*token_dup(const char *s, size_t size);
 
 static void pass_token(char token, char **str)
 {
@@ -66,23 +64,6 @@ static int	count_tokens(char *str)
 	return (count);
 }
 
-static char	*token_dup(const char *s, size_t size)
-{
-	char	*dup;
-	size_t	i;
-
-	dup = malloc(sizeof(char) * size + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
 
 static void	split_tokens(char **tokens, char **str)
 {
@@ -104,22 +85,6 @@ static void	split_tokens(char **tokens, char **str)
 	}
 	else
 		(*str)++;
-}
-
-static int	strcomp(char *str1, char *str2)
-{
-	if (!str1)
-		return (0);
-	while (*str1 && *str2)
-	{
-		if (*str1 != *str2)
-			return (0);
-		str1++;
-		str2++;
-	}
-	if ((!(*str2) && *str1) || (!(*str1) && *str2))
-		return (0);
-	return (1);
 }
 
 static void	insert_types(t_token *tokens)
