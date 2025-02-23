@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   test_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 01:05:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:05:37 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 03:51:41 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include <stdio.h>
 
 void	print_token(t_token *tokens)
 {

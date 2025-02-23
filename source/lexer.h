@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:03:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/20 23:40:14 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 04:09:04 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
+
+# include <stdio.h>
  // count the variables once after counted all of them add \n =
 typedef enum { 	// '\n' '\"' '\'' '>' '<' '>>' '<<' '$' '=' '|'
 	TOKEN_WORD,				// Generic word // {{$ARG -> WORD}}

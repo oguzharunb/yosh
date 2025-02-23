@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:04:51 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/22 14:11:59 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 04:15:23 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,22 @@ static char	*ft_strndup(const char	*str, int len)
 	return (ret);
 }
 
+static int	is_token(char c)
+{
+	return (c == '\"' || c == '\'' || c == '$' || c == '=' ||
+			c == '>' || c == '<' || c == '|' || c == '\n');
+}
+
 static char	*expand_dollar(char *token_value) // ADD ONLY $? NOT $_ OR $$ add struct for it
 {
 	char	*ret;
 	char	*trim;
 	int		i;
 
-	i = -1;
-	while (token_value[i] && token_value[i] != ' ')
+	i = 0;
+	if (!token_value[i + 1] || token_value[i + 1] == ' ' || is_token(token_value[i+1]))
+		return (ft_strdup("$"));
+	while (token_value[i+1] && token_value[i+1] != ' ' && !is_token(token_value[i+1]))
 		i++;
 	trim = ft_strndup(token_value + 1, i);
 	if (!trim)
@@ -106,46 +114,66 @@ static int	ft_strlen(const char *str)
 	return (p - str);
 }
 
-#include <stdio.h>
 static char	*expand_dquote(char *token_value)
 {
-	//char	*ret;
+	char	*ret;
 	int		len;
 	int		i;
 	char	**env_vars;
 	int		j;
 	
 	i = -1;
+	len = 0;
 	while (token_value[++i])
 		if (token_value[i] == '$')
 			len++;
-	env_vars = (char **)malloc(sizeof(char *) * len);
+	env_vars = (char **)malloc(sizeof(char *) * len+1);
 	if (!env_vars)
 		return (NULL);
+	env_vars[len] = 0;
 	len = 0;
 	j = 0;
 	i = -1;
 	while (token_value[++i])
 	{
-		//printf("tokvalcur:%c\n", (token_value[i]));
 		if (token_value[i] == '$')
 		{
-			env_vars[j] = expand_dollar(token_value);
+			env_vars[j] = expand_dollar(token_value + i);
 			if (!env_vars[j])
 				return (NULL);
 			len += ft_strlen(env_vars[j]);
-			while (token_value[i + 1] && token_value[i + 1] != ' ' && token_value[i + 1] != '\"' )
+			while (token_value[i + 1] && token_value[i + 1] != ' ' && !is_token(token_value[i + 1]))
 				i++;
 			j++;
 		}
 		else
 			len++;			
 	}
-	//printf("{{{%d}}}\n", len);
 	j = -1;
-	while (env_vars[++j])
-		printf("%sx\n", env_vars[j]);
-	return (NULL);
+	ret = malloc(sizeof(char *) * len - 1);
+	ret[len - 2] = '\0';
+	i = 0;
+	j = 1;
+	while (--len > 1)
+	{
+		printf("current: %c\n", token_value[j]);
+		if (token_value[j] == '$')
+		{
+			while (**env_vars)
+			{
+				ret[i] = **env_vars;
+				i++;
+				(*env_vars)++;
+			}
+			j++;
+			while (token_value[j] && token_value[j] != ' ' && !is_token(token_value[j]))
+				j++;
+			(env_vars)++;
+		}
+		else
+			ret[i++] = token_value[j++];
+	}
+	return (ret);
 }
 
 void	expander(t_token *tokens)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:06:17 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/22 15:38:28 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 03:52:49 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	is_token(char c)
@@ -35,11 +34,11 @@ static void pass_token(char token, char **str)
 	}
 	else if (token == '$')
 	{
-		(*str)++;
-		while (**str && **str != ' ' && !is_token(*(*str+1)))
+		while (*((*str) + 1) && *((*str) + 1) != ' ' && !is_token(*((*str) + 1)))
 			(*str)++;
 	}
 }
+
 static int	count_tokens(char *str)
 {
 	int	is_compound;

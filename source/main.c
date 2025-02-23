@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 01:40:52 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/23 04:02:46 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,22 @@ void free_tokens(t_token *tokens)
 
 void	expander(t_token *tokens);
 
+void	print_tokens(t_token *tokens)
+{
+	int i = 0;
+	while (tokens[i].value)
+	{
+		printf("tokens: [%s]\n", tokens[i].value);
+		i++;
+	}
+	printf("END\n");
+}
+
 int main(void)
 {
 	char		*input;
 	t_token 	*tokens;
-	t_astnode	*root;
+	//t_astnode	*root;
 	
 	while (1)
 	{
@@ -85,14 +96,15 @@ int main(void)
 		expander(tokens); /* deletes quotes and dquotes
 						and gets env variables */
 		//	parser
-		//print_token(tokens);
-		root = init_node(tokens);
-		if (!root)
-		
-		parser(root);
-		//	executer
-		free_asttree(root);
-		free(input);
+		print_tokens(tokens); // for testing tokens
+
+		//root = init_node(tokens);
+		//if (!root)
+		//
+		//parser(root);
+		////	executer
+		//free_asttree(root);
+		//free(input);
 	}
 	rl_clear_history();
 	free(input);
