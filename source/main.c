@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 07:21:43 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/23 08:00:41 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int main(void)
 		add_history(input);
 		expander(tokens); /* deletes quotes and dquotes
 						and gets env variables */
+		print_tokens(tokens); // for testing purposes
 		//	parser
-		print_tokens(tokens); // for testing tokens
 
 		root = init_node(tokens);
 		if (!root)

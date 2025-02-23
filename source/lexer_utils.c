@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 04:54:53 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 04:57:10 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/23 07:44:19 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	strcomp(char *str1, char *str2)
 		return (0);
 	return (1);
 }
+
 char	*token_dup(const char *s, int size)
 {
 	char	*dup;
