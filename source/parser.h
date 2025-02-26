@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 18:00:14 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:40:36 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 13:41:27 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ typedef enum
 	NODE_REDIRECT,
 	NODE_PIPE
 } e_NodeType;
+
 typedef struct s_astnode
 {
 	e_NodeType				type;
 	t_token					*tokens;
 	struct s_astnode		*left;
 	struct s_astnode		*right;
-	char					**command;
+	char					**args;
+	char					*path;
 	char					*file;
 	int						redirect_type;
 } t_astnode;

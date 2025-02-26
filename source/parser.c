@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:29:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 07:29:50 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:08:43 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@
 #include <unistd.h>
 void	free_asttree(t_astnode *root)
 {
-	write(1, "f\n", 2);
 	if (!root)
 		return ;
-	if (root->command)
-		free(root->command);
+	if (root->args)
+		free(root->args);
 	free_asttree(root->left);
 	free_asttree(root->right);
 	free(root);
-	write(1, "freed node\n", 12);
 }
 
 t_astnode	*init_node(t_token *token)
@@ -45,7 +43,8 @@ t_astnode	*init_node(t_token *token)
 	node->file = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->command = NULL;
+	node->args = NULL;
+	node->path = NULL;
 	node->type = UNINITIALIZED;
 	node->redirect_type = 0;
 	return (node);
@@ -56,6 +55,6 @@ t_astnode	*parser(t_astnode *root)
 	parse_pipe(root);
 	parse_redirect(root);
 	parse_command(root);
-	print_asttree(root);
+	//print_asttree(root);
 	return (root);
 }

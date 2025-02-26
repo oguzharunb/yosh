@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 08:00:41 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:10:54 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include "lexer.h"
 #include "parser.h"
 #include <unistd.h>
+#include "executer.h"
+#include "str.h"
 
 static int	check_sequence_complete(char *input)
 {
@@ -85,7 +87,7 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
-		if (!strcmp(input, "exit"))	break; // exit is also a command so delete this line
+		if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
 		tokens = lexer(input);
 		if (!tokens->value)
 		{
@@ -95,13 +97,17 @@ int main(void)
 		add_history(input);
 		expander(tokens); /* deletes quotes and dquotes
 						and gets env variables */
-		print_tokens(tokens); // for testing purposes
-		//	parser
+		// print_tokens(tokens); // for testing purposes
+		// parser
 
 		root = init_node(tokens);
 		if (!root)
+		{
+			perror("init_node");
+			free(input);
+		}
 		parser(root);
-		//	executer
+		execute_tree(root);
 		free_asttree(root);
 		free(input);
 	}

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_utils.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 04:54:53 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 08:42:18 by obastug          ###   ########.fr       */
+/*   Created: 2025/02/26 11:15:08 by obastug           #+#    #+#             */
+/*   Updated: 2025/02/26 13:06:25 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "str.h"
 
-int	is_token(char c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	return (c == '\"' || c == '\'' || c == '$' || c == '=' ||
-			c == '>' || c == '<' || c == '|' || c == '\n');
-}
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*final_string;
 
-char	*token_dup(const char *s, int size)
-{
-	char	*dup;
-	int		i;
-
-	dup = malloc(sizeof(char) * size + 1);
-	if (!dup)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	final_string = malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!final_string)
 		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	ft_memcpy(final_string, s1, s1_len);
+	final_string[s1_len] = '/';
+	ft_memcpy(final_string + s1_len + 1, s2, s2_len);
+	final_string[s1_len + s2_len + 1] = '\0';
+	return (final_string);
 }

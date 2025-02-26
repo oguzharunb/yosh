@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_utils.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 04:54:53 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 08:42:18 by obastug          ###   ########.fr       */
+/*   Created: 2025/02/26 15:00:53 by obastug           #+#    #+#             */
+/*   Updated: 2025/02/26 15:01:17 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "str.h"
+#include <stddef.h>
 
-int	is_token(char c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	return (c == '\"' || c == '\'' || c == '$' || c == '=' ||
-			c == '>' || c == '<' || c == '|' || c == '\n');
+	register size_t	i;
+	unsigned char	*tmp_s;
+	unsigned char	tmp_c;
+
+	tmp_s = (unsigned char *)s;
+	tmp_c = (unsigned char)c;
+	i = -1;
+	while (++i < n)
+	{
+		if (tmp_s[i] == tmp_c)
+			return (tmp_s + i);
+	}
+	return (NULL);
 }
 
-char	*token_dup(const char *s, int size)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*dup;
-	int		i;
-
-	dup = malloc(sizeof(char) * size + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (i < size)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	return (ft_memchr(s, c, ft_strlen(s) + 1));
 }
