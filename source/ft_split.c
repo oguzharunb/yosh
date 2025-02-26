@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:53:09 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/26 13:09:01 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:03:18 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	free_str_list(char **str)
 	i = 0;
 	while (str[i])
 	{
-		free(str[i++]);
+		free(str[i]);
+		i++;
 	}
 	free(str);
 }

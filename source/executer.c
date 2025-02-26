@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 01:43:36 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/26 15:41:08 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 17:19:23 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <stdio.h>
+#include <sys/wait.h>
 
 // | stdout -> stdin
 // > stdout -> fd
@@ -28,20 +29,45 @@ extern char **__environ;
 int	execute_command_node(t_astnode *node)
 {
 	char	**env = __environ;
-	if (execve(node->path, node->args, env) == -1)
+	int		pid;
+
+	pid = fork();
+	if (pid == 0 && execve(node->path, node->args, env) == -1)
 	{
 		perror("execve");
 		return (-1);
 	}
+	if (pid)
+	{
+		waitpid(pid, NULL, 0);
+	}
 	return (0);
 }
 
+// 3 -> systemcall error
 // 2 -> execution error
 // 1 -> no node
 int	execute_valid_tree(t_astnode *node)
 {
+	int	pipedes[2];
 	if (!node)
 		return (1);
+	if (node->type == NODE_PIPE)
+	{
+		printf("redirected\n");
+		if (pipe(pipedes) == -1)
+		{
+			perror("pipe");
+			return (3);
+		}
+		close(pipedes[0]);
+		if (dup2(pipedes[1], STDOUT_FILENO) == -1)
+		{
+			perror("dup2");
+			return (3);
+		}
+		close(pipedes[1]);
+	}
 	execute_valid_tree(node->left);
 	execute_valid_tree(node->right);
 	if (node->type == NODE_COMMAND)
@@ -61,7 +87,7 @@ int	execute(t_astnode *root)
 {
 	if (!find_path_for_command(root))
 	{
-		perror("find_path_for_command");
+		printf("command not found\n");
 		return (1);
 	}
 	if (execute_valid_tree(root))

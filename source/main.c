@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 15:38:30 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:15:51 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
-		if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
+		if (ft_strcmp(input, "exit"))
+		{
+			break; // exit is also a command so delete this line
+		}
 		tokens = lexer(input);
 		if (!tokens->value)
 		{

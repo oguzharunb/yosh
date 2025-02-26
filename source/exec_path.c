@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:05:09 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/26 15:11:34 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:27:56 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,16 @@ int	find_path_for_command(t_astnode *node)
 	else if (node->type == NODE_COMMAND)
 	{
 		path = search_executable_path(node->args[0]);
-		if (NULL)
+		if (!path)
 		{
-			perror("search executable path");
+			printf("invalid path: %s\n", node->args[0]);
 			return (0);
 		}
 		node->path = path;
 	}
-	find_path_for_command(node->left);
-	find_path_for_command(node->right);
+	if (!find_path_for_command(node->left))
+		return (0);
+	if (!find_path_for_command(node->right))
+		return (0);
 	return (1);
 }
