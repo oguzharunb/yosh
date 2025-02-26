@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 09:06:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/27 00:07:49 by yusudemi         ###   ########.fr       */
+/*   Created: 2025/02/27 00:12:15 by yusudemi          #+#    #+#             */
+/*   Updated: 2025/02/27 01:00:36 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef BUILTINS_H
-# define BUILTINS_H
 
-int		pwd(char **args);
-void	ft_export(char	**args);
-void	unset(char	**args);
-int		echo(char	**args);
-int		cd(int argc, char	**args);
-void	unset(char	**args);
-void	printenv(char	**args);
+#include <signal.h>
 
-#endif
+//when ctr-c -> last exit status = 130
+void	handle_sigint(int sig)
+{
+	(void)sig;
+}
+
+void	handle_sigquit(int sig)
+{
+	(void)sig;
+}
+
+void	handle_sigterm(int sig)
+{
+	(void)sig;
+}
+
+int	setup_signal_handlers(void)
+{
+	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, handle_sigquit);
+	signal(SIGTERM, handle_sigterm);
+}

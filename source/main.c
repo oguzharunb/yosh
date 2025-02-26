@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 15:10:54 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/27 00:58:56 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,15 @@
 #include <unistd.h>
 #include "executer.h"
 #include "str.h"
+#include "enviroment.h"
 
+volatile int g_signal;
+/*
+Be careful. This global variable must only store the signal number
+and must not provide any additional information or access to data.
+Therefore, using "norm" type structures in the global scope is
+forbidden.
+*/
 static int	check_sequence_complete(char *input)
 {
 	int	quote;
@@ -68,10 +76,14 @@ void	print_tokens(t_token *tokens)
 
 int main(void)
 {
-	char		*input;
-	t_token 	*tokens;
-	t_astnode	*root;
+	char			*input;
+	t_token 		*tokens;
+	t_astnode		*root;
+	t_enviroment	env;
 	
+	ft_bzero(&env, sizeof(t_enviroment));
+	setup_enviroment(&env);
+	setup_paths(&env);
 	while (1)
 	{
 		//input = get_input(); // checks if input completed
@@ -107,7 +119,7 @@ int main(void)
 			free(input);
 		}
 		parser(root);
-		execute_tree(root);
+		execute_tree(root, &env);
 		free_asttree(root);
 		free(input);
 	}

@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#ifndef STR_H
+# define STR_H
+
+# include <stddef.h>
 
 int		ft_strcmp(char *str1, char *str2);
 int		ft_strlen(char const *s);
@@ -21,3 +24,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	free_str_list(char **str);
 char	*ft_strchr(const char *s, int c);
+int		ft_strcmp(char *str1, char *str2);
+char	*ft_strdup(const char *str);
+char	*ft_strndup(const char	*str, int len);
+
+#endif

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 09:06:49 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/27 00:07:49 by yusudemi         ###   ########.fr       */
+/*   Created: 2025/02/26 23:04:04 by yusudemi          #+#    #+#             */
+/*   Updated: 2025/02/26 23:04:39 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef BUILTINS_H
-# define BUILTINS_H
+#include <stdlib.h>
 
-int		pwd(char **args);
-void	ft_export(char	**args);
-void	unset(char	**args);
-int		echo(char	**args);
-int		cd(int argc, char	**args);
-void	unset(char	**args);
-void	printenv(char	**args);
+char	*ft_strdup(const char *str)
+{
+	int	len;
+	int	i;
+	char	*ret;
 
-#endif
+	len = 0;
+	while (str[len])
+		len++;
+	ret = malloc(sizeof(char) * (len + 1));
+	if(ret == NULL)
+		return (NULL);
+	i = -1;
+	while(++i < len)
+		ret[i] = str[i];
+	ret[i] = '\0';
+	return (ret);
+}

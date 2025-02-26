@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 02:19:21 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/26 13:40:10 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/27 00:11:55 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "enviroment.h"
 
 int	echo(char	**args)
 {
@@ -56,41 +57,41 @@ int	cd(int argc, char **args)
 	return (0);
 }
 
-int	pwd(char **args)
+int	pwd(char **args, t_enviroment *env)
 {
-	char	buf[5000];
-	
-	(void)args;
-	ft_bzero(buf, sizeof(buf));
-	if (!getcwd(buf, sizeof(buf)))
+	char *buf;
+
+	buf = get_cwd(env);
+	if (!buf)
 		return (1);
 	printf("%s\n", buf);
-	return(0) ;
+	return (0);
 }
 
 void	ft_export(char	**args)
 {
 	(void)args;
+	// use find_variable if it exist use revalue_variable
+	// if itsnt use add_variable
 	return ;
 }
 
 void	unset(char	**args)
 {
 	(void)args;
+	//use delete_variable command after find_variable xd
 	return ;
 }
 
-void	printenv(char	**args)
+void	printenv(char	**args, t_enviroment *env)
 {
-	extern char	**environ;
-	char		**env;
-
-	(void)args;
-	env = environ;
-	while (*env)
+	t_node	*head;
+	
+	head = env->top;
+	while (head)
 	{
-		printf("%s\n", *env);
-		env++;
+		printf("%s=%s\n", *head->key, *head->value);
+		head = head->next;
 	}
 	return ;
 }

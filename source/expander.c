@@ -6,16 +6,15 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:04:51 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 06:00:16 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 23:35:35 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+#include "str.h"
 #include <stdlib.h>
 
 int		is_token(char c);
-char	*ft_strndup(const char	*str, int len);
-int		ft_strlen(const char *str);
 char	*expand_dquote(char *token_value);
 
 

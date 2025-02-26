@@ -6,13 +6,13 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 05:48:02 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 07:19:25 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 23:35:54 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "str.h"
 
-int		ft_strlen(const char *str);
 int		is_token(char c);
 char	*expand_dollar(char *token_value);
 
