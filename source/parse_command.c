@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:26:18 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 01:13:32 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 13:21:31 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_astnode	*parse_command(t_astnode *root)
 		command_list = token_to_command(root->tokens);
 		if (!command_list)
 			return (NULL);
-		root->command = command_list;
+		root->args = command_list;
 		root->type = NODE_COMMAND;
 	}
 	else

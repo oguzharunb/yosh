@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:06:17 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/23 05:06:59 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:06:49 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 int	is_token(char c);
-int	strcomp(char *str1, char *str2);
+int	ft_strcmp(char *str1, char *str2);
 char	*token_dup(const char *s, size_t size);
 
 static void pass_token(char token, char **str)
@@ -94,17 +94,17 @@ static void	insert_types(t_token *tokens)
 	i = 0;
 	while (tokens[i].value)
 	{
-		if (strcomp((tokens + i)->value, ">"))
+		if (ft_strcmp((tokens + i)->value, ">"))
 			(tokens + i)->type = TOKEN_GREAT;
-		else if (strcomp((tokens + i)->value, "<"))
+		else if (ft_strcmp((tokens + i)->value, "<"))
 			(tokens + i)->type = TOKEN_LESS;
-		else if (strcomp((tokens + i)->value, ">>"))
+		else if (ft_strcmp((tokens + i)->value, ">>"))
 			(tokens + i)->type = TOKEN_DGREAT;
-		else if (strcomp((tokens + i)->value, "<<"))
+		else if (ft_strcmp((tokens + i)->value, "<<"))
 			(tokens + i)->type = TOKEN_DLESS;
-		else if (strcomp((tokens + i)->value, "|"))
+		else if (ft_strcmp((tokens + i)->value, "|"))
 			(tokens + i)->type = TOKEN_PIPE;
-		else if (strcomp((tokens + i)->value, "\n"))
+		else if (ft_strcmp((tokens + i)->value, "\n"))
 			(tokens + i)->type = TOKEN_NEWLINE;
 		else
 			(tokens + i)->type = TOKEN_WORD;

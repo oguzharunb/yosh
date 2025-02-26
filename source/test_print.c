@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 01:05:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/23 03:51:41 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:35:17 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	print_node(t_astnode *node)
 	{
 		printf("node type: command\n");
 		//print_token(node->tokens);
-		print_str_list(node->command);
+		printf("execute path: '%s'\n", node->path);
+		print_str_list(node->args);
 	}
 	else if (node->type == NODE_PIPE)
 		printf("node type: pipe\n");
