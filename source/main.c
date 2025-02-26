@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 15:10:54 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 15:38:30 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int main(void)
 			free(input);
 		}
 		parser(root);
-		execute_tree(root);
+		execute(root);
 		free_asttree(root);
 		free(input);
 	}
