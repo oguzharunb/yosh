@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:29:21 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 23:49:24 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:04:02 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_node	*find_variable(t_enviroment *env, char *key)
 	return (NULL);
 }
 
-void	delete_variable(t_enviroment *env, char *key, char *value, int lock)
+void	delete_variable(t_enviroment *env, char *key)
 {
 	t_node	*prev;
 	t_node	*to_delete;
@@ -55,16 +55,17 @@ void	delete_variable(t_enviroment *env, char *key, char *value, int lock)
 		to_delete = to_delete->next;
 	}
 }
-
+#include <stdio.h>
 int	revalue_variable(t_enviroment *env, char *key, char *value, int lock)
 {
 	t_node	*node;
-
+	char	*tmp;
 	node = find_variable(env, key);
 	if (!node)
-		return (-1);
-	free(node->value);
+	return (-1);
+	tmp = node->value;
 	node->value = ft_strdup(value);
+	free(tmp);
 	if (!node->value)
 		return (-1);
 	node->export_lock = lock;
@@ -74,7 +75,6 @@ int	revalue_variable(t_enviroment *env, char *key, char *value, int lock)
 int	add_variable(t_enviroment	*env, char *key, char *value, int lock)
 {
 	t_node	*new;
-	t_node	*tmp;
 
 	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)

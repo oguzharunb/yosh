@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/27 00:58:56 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:55:36 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,24 @@ void free_tokens(t_token *tokens)
 }
 
 
-void	print_tokens(t_token *tokens)
+void	print_tokens(t_token *tokens) // for testing purposes
 {
 	int i = 0;
 	while (tokens[i].value)
 	{
 		printf("tokens: [%s]\n", tokens[i].value);
 		i++;
+	}
+	printf("END\n");
+}
+
+void	print_env(t_enviroment *env) // for testing purposes
+{
+	t_node *head = env->top;
+	while (head)
+	{
+		printf("key: [%s] value: [%s]\n", head->key, head->value);
+		head = head->next;
 	}
 	printf("END\n");
 }
@@ -83,7 +94,8 @@ int main(void)
 	
 	ft_bzero(&env, sizeof(t_enviroment));
 	setup_enviroment(&env);
-	setup_paths(&env);
+	if (setup_paths(&env))
+		return (-1);
 	while (1)
 	{
 		//input = get_input(); // checks if input completed
@@ -99,7 +111,7 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
-		if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
+		//if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
 		tokens = lexer(input);
 		if (!tokens->value)
 		{
@@ -122,6 +134,7 @@ int main(void)
 		execute_tree(root, &env);
 		free_asttree(root);
 		free(input);
+		print_env(&env);
 	}
 	rl_clear_history();
 	free(input);

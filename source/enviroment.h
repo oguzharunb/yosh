@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 06:08:59 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/27 00:57:41 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:16:38 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ typedef struct s_enviroment
 }		t_enviroment;
 
 int		setup_enviroment(t_enviroment *env);
-int	setup_paths(t_enviroment *env);
+int		setup_paths(t_enviroment *env);
+char	*get_cwd(t_enviroment *env);
 t_node	*find_variable(t_enviroment *env, char *key);
-void	delete_variable(t_enviroment *env, char *key, char *value, int lock);
+void	delete_variable(t_enviroment *env, char *key);
 int		revalue_variable(t_enviroment *env, char *key, char *value, int lock);
 int		add_variable(t_enviroment	*env, char *key, char *value, int lock);
 int		clear_enviroment(t_enviroment *env);

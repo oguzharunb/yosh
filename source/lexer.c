@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:06:17 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 13:06:49 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/27 19:52:24 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+#include <unistd.h>
 #include <stdlib.h>
 
 int	is_token(char c);

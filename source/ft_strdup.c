@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 23:04:04 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/26 23:04:39 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 20:03:46 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ char	*ft_strdup(const char *str)
 	int	i;
 	char	*ret;
 
+	if (!str)
+	{
+		ret = malloc(sizeof(char) * 1);
+		ret[0] = '\0';
+		return (ret);
+	}
 	len = 0;
 	while (str[len])
 		len++;
