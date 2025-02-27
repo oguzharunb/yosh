@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/27 00:58:56 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:13:08 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
-		if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
+		if (ft_strcmp(input, "exit"))
+		{
+			break; // exit is also a command so delete this line
+		}
 		tokens = lexer(input);
 		if (!tokens->value)
 		{
