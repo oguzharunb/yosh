@@ -6,7 +6,7 @@
 /*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 02:19:21 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/27 00:11:55 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:08:37 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	cd(int argc, char **args)
 int	pwd(char **args, t_enviroment *env)
 {
 	char *buf;
-
+	(void)args;
+	(void)env;
 	buf = get_cwd(env);
 	if (!buf)
 		return (1);
@@ -86,11 +87,11 @@ void	unset(char	**args)
 void	printenv(char	**args, t_enviroment *env)
 {
 	t_node	*head;
-	
+	(void)args;
 	head = env->top;
 	while (head)
 	{
-		printf("%s=%s\n", *head->key, *head->value);
+		printf("%s=%s\n", head->key, head->value);
 		head = head->next;
 	}
 	return ;

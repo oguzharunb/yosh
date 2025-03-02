@@ -13,6 +13,7 @@
 #ifndef EXECUTER_H
 # define EXECUTER_H
 
+# include "enviroment.h"
 int	find_path_for_command(t_astnode *node);
 int	execute_tree(t_astnode *root, t_enviroment *env);
 

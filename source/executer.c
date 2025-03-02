@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 01:43:36 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/27 12:14:11 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/27 19:20:31 by yusudemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@
 #include <stdio.h>
 #include <sys/wait.h>
 #include "enviroment.h"
-// | stdout -> stdin
-// > stdout -> fd
-// < fd -> stdin
-// >> stdout -> fd
-// << stdin -> 
+
 
 extern char **__environ;
 // assuming node is type of NODE_COMMAND
