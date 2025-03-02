@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yusudemi <yusudemi@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
 /*   Updated: 2025/02/27 19:55:36 by yusudemi         ###   ########.fr       */
@@ -111,7 +111,6 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
-		//if (!ft_strcmp(input, "exit"))	break; // exit is also a command so delete this line
 		tokens = lexer(input);
 		if (!tokens->value)
 		{

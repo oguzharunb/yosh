@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:29:28 by obastug           #+#    #+#             */
-/*   Updated: 2025/02/26 15:08:43 by obastug          ###   ########.fr       */
+/*   Updated: 2025/02/26 16:02:45 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "parser.h"
 #include <stdio.h>
+#include "str.h"
 
 //first we initialize first node
 //then we send it to the parser
@@ -26,7 +27,7 @@ void	free_asttree(t_astnode *root)
 	if (!root)
 		return ;
 	if (root->args)
-		free(root->args);
+		free_str_list(root->args);
 	free_asttree(root->left);
 	free_asttree(root->right);
 	free(root);
