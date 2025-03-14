@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:01:22 by yusudemi          #+#    #+#             */
-/*   Updated: 2025/02/27 19:55:36 by yusudemi         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:04:05 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int main(void)
 			free(input);
 			exit(1); // clear and exit ofc -- later implement
 		}
+		if (ft_strcmp(input, "exit"))
+		{
+			break ;
+		}
 		tokens = lexer(input);
 		if (!tokens->value)
 		{
@@ -130,10 +134,10 @@ int main(void)
 			free(input);
 		}
 		parser(root);
-		execute_tree(root, &env);
+		executer(root, &env);
 		free_asttree(root);
 		free(input);
-		print_env(&env);
+		//print_env(&env);
 	}
 	rl_clear_history();
 	free(input);
